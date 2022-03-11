@@ -11,6 +11,6 @@ int main(void)
 
 	for (ascii_code = 48; ascii_code <= 57; ascii_code++)
 		putchar(ascii_code);
-	putchar(10);	
+	putchar(10);
 	return (0);
 }
