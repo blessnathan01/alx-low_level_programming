@@ -9,9 +9,10 @@ int main(void)
 {
 	int ascii_code;
 
-	for (ascii_code = 48; ascii_code <= 57; ascii_code++)
+	for (ascii_code = 48; ascii_code <= 56; ascii_code++)
 	{
 		putchar(ascii_code);
+		putchar(ascii_code + 1);
 		if (ascii_code < 57)
 		{
 			putchar(44);
