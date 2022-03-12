@@ -13,7 +13,7 @@ int main(void)
 	{
 		putchar(ascii_code);
 		putchar(ascii_code + 1);
-		if (ascii_code < 57)
+		if (ascii_code < 56)
 		{
 			putchar(44);
 			putchar(32);
