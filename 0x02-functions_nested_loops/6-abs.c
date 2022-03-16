@@ -1,13 +1,22 @@
 #include "main.h"
-#include <ctype.h>
 
 /**
- * _isalpha - if the character is alphabet
- * @c:  is the int that will use for the argument of the function
- * Return: 1 if lowercase or uppercase character 0 if not
+ * _abs - absolute value of a number
+ * @n: number
+ * Return: positive number
  */
-int _abs(int)
+int _abs(int n)
 {
-	abs(int);
-	return (0);
+	if (n > 0)
+	{
+		return (n);
+	}
+	else if (n == 0)
+	{
+		return (0);
+	}
+	else
+	{
+		return (-n);
+	}
 }
