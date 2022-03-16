@@ -15,6 +15,7 @@ void print_to_98(int n)
 	else if (n < 98)
 	{
 		int j;
+
 		for (j = n; j < 99; j++)
 		{
 			if (j == 98)
@@ -26,6 +27,7 @@ void print_to_98(int n)
 	else if (n > 98)
 	{
 		int j;
+
 		for (j = n; j > 97; j--)
 		{
 			if (j == 98)
