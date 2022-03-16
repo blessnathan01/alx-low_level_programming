@@ -4,8 +4,8 @@
  * print_sign - function to print sign
  * @n: number to be checked
  * Return: 1 and print + if n > 0
- * Retrun: 0 and print 0 if n == 0
- * Return: -1 and print - if n < 0
+ * 0 and print 0 if n == 0
+ * -1 and print - if n < 0
  */
 int print_sign(int n)
 {
