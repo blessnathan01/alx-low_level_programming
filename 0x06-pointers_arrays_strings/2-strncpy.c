@@ -1,24 +1,24 @@
 #include "main.h"
 
 /**
- * _strcpy - copies a string
+ * _strncpy - copies a string
  * count till all bytes are written
  * @dest: pointer to a string
  * @src: pointer to a string
- * @i: index
+ * @n: number of bytes to be used
  *
  * Return: dest
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int count_byte;
+	int countB;
 
-	for (count_byte = 0; (count_byte < n) && (src[count_byte] != '\0'); count_byte++)
+	for (countB = 0; (countB < n) && (src[countB] != '\0'); countB++)
 	{
-		dest[count_byte] = src[count_byte];
-		for (; count_byte < n; count_byte++)
+		dest[countB] = src[countB];
+		for (; countB < n; countB++)
 		{
-			dest[count_byte] = '\0';
+			dest[countB] = '\0';
 		}
 	}
 	return (dest);
