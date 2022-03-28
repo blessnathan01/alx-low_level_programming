@@ -20,6 +20,8 @@ char *_strchr(char *s, char c)
 			p = &s[j];
 			break;
 		}
+		else
+			return (NULL);
 	}
 	if (s[j] == c)
 		p = &s[j];
