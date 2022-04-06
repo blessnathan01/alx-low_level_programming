@@ -1,112 +1,67 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 /**
- * wordnos - counts no of words in a given string
- * @str: pointer to the string
+ * ch_free_grid - frees a 2 dimensional array.
+ * @grid: multidimensional array of char.
+ * @height: height of the array.
  *
- * Return: No. of words in the string (int)
+ * Return: no return
  */
-int wordnos(char *str)
+void ch_free_grid(char **grid, unsigned int height)
 {
-	int wordno, i, j;
-
-	wordno = 0;
-	i = 0;
-	while (*(str + i) != '\0')
+	if (grid != NULL && height != 0)
 	{
-		if (*(str + i) != 32 && *(str + i) != '\0')
-		{
-			j = i;
-			while (*(str + j) != 32 && *(str + j) != '\0')
-				j++;
-			wordno++;
-			i = j - 1;
-		}
-		i++;
-	}
-	return (wordno);
-}
-
-/**
- * cpystr - copies words in string to different elements of 2d array of strings
- * @s: double pointer to a 2D array of strings
- * @str: pointer to string whose words are to be copied
- *
- * Return: void
- */
-void cpystr(char **s, char *str)
-{
-	int i, j, l, idx;
-
-	i = 0;
-	idx = 0;
-	while (*(str + i) != '\0')
-	{
-		if (*(str + i) != 32 && *(str + i) != '\0')
-		{
-			j = i;
-			l = 0;
-			while (*(str + j) != 32 && *(str + j) != '\0')
-			{
-				s[idx][l] = *(str + j);
-				l++;
-				j++;
-			}
-			s[idx][l] = '\0';
-			idx++;
-			i = j;
-		}
-		i++;
+		for (; height > 0; height--)
+			free(grid[height]);
+		free(grid[height]);
+		free(grid);
 	}
 }
 
 /**
- * strtow - splits a string into words and stores the words in an array
- * @str: pointer to string
+ * strtow - splits a string into words.
+ * @str: string.
  *
- * Return: double pointer to the array containing the words
+ * Return: pointer of an array of integers
  */
 char **strtow(char *str)
 {
-	char **s;
-	int wordno, i, j, k, length, idx;
+	char **aout;
+	unsigned int c, height, i, j, a1;
 
-	if (str == NULL || str[0] == '\0')
-		return (0);
-	wordno = wordnos(str);
-	s = (char **)malloc(sizeof(char *) * (wordno + 1));
-	if (s == 0 || wordno == 0)
-		return (0);
-	i = 0;
-	idx = 0;
-	while (*(str + i) != '\0')
+	if (str == NULL || *str == '\0')
+		return (NULL);
+	for (c = height = 0; str[c] != '\0'; c++)
+		if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+			height++;
+	aout = malloc((height + 1) * sizeof(char *));
+	if (aout == NULL || height == 0)
 	{
-		if (*(str + i) != 32 && *(str + i) != '\0')
-		{
-			j = i;
-			length = 0;
-			while (*(str + j) != 32 && *(str + j) != '\0')
-			{
-				length++;
-				printf("Length is %d\n", length);
-				j++;
-			}
-			*(s + idx) = (char *)malloc(sizeof(char) * (length + 1));
-			if (*(s + idx) == 0)
-			{
-				for (k = 0; k < idx; k++)
-					free(*(s + k));
-				free(s);
-				return (0);
-			}
-			idx++;
-			i = j - 1;
-			printf("value of i is %d \n", i);
-		}
-		i++;
+		free(aout);
+		return (NULL);
 	}
-	cpystr(s, str);
-	return (s);
+	for (i = a1 = 0; i < height; i++)
+	{
+		for (c = a1; str[c] != '\0'; c++)
+		{
+			if (str[c] == ' ')
+				a1++;
+			if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+			{
+				aout[i] = malloc((c - a1 + 2) * sizeof(char));
+				if (aout[i] == NULL)
+				{
+					ch_free_grid(aout, i);
+					return (NULL);
+				}
+				break;
+			}
+		}
+		for (j = 0; a1 <= c; a1++, j++)
+			aout[i][j] = str[a1];
+		aout[i][j] = '\0';
+	}
+	aout[i] = NULL;
+	return (aout);
 }
