@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 		printf("Error\n"), exit(98);
-[O	ln1 = _checknum(argv, 1), ln2 = _checknum(argv, 2);
+	ln1 = _checknum(argv, 1), ln2 = _checknum(argv, 2);
 	_is_zero(argv), lnout = ln1 + ln2, nout = malloc(lnout + 1);
 	if (nout == NULL)
 		printf("Error\n"), exit(98);
