@@ -1,1 +1,1 @@
-## Structures and typeof
+## Structures and typedef
