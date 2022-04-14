@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 /**
  * print_number - prints numbers then a new line
  * @separator: comma
