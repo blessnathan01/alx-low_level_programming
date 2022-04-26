@@ -1,76 +1,69 @@
 #include "lists.h"
 
 /**
- * add_nodeaddress - Add a node to a list with
- * @head: Pointer to the pointer of the start of the list
- * @address: The address of another list's node
+ * free_listp - frees a linked list
+ * @head: head of a list.
  *
- * Return: Address of new node, NULL if it fails
+ * Return: no return.
  */
-listadd_t *add_nodeaddress(listadd_t **head, const listint_t *address)
+void free_listp(listp_t **head)
 {
-	listadd_t *new;
+	listp_t *temp;
+	listp_t *curr;
 
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
+	if (head != NULL)
 	{
-		free_listadd(*head);
-		exit(98);
-	}
-	new->address = (void *)address;
-	new->next = *head;
-	*head = new;
-	return (new);
-}
-
-/**
- * free_listadd - Free a list
- * @head: Pointer to the start of the list
- */
-void free_listadd(listadd_t *head)
-{
-	listadd_t *killnode;
-
-	while (head != NULL)
-	{
-		killnode = head;
-		head = head->next;
-		free(killnode);
+		curr = *head;
+		while ((temp = curr) != NULL)
+		{
+			curr = curr->next;
+			free(temp);
+		}
+		*head = NULL;
 	}
 }
 
 /**
- * print_listint_safe - Print out a given list, but only once if it loops
- * @head: Pointer to the start of the list
+ * print_listint_safe - prints a linked list.
+ * @head: head of a list.
  *
- * Return: Number of nodes, if it fails print 98
+ * Return: number of nodes in the list.
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	listadd_t *newhead;
-	listadd_t *checker;
-	unsigned int count;
+	size_t nnodes = 0;
+	listp_t *hptr, *new, *add;
 
-	count = 0;
-	newhead = NULL;
+	hptr = NULL;
 	while (head != NULL)
 	{
-		checker = newhead;
-		while (checker != NULL)
+		new = malloc(sizeof(listp_t));
+
+		if (new == NULL)
+			exit(98);
+
+		new->p = (void *)head;
+		new->next = hptr;
+		hptr = new;
+
+		add = hptr;
+
+		while (add->next != NULL)
 		{
-			if (head == checker->address)
+			add = add->next;
+			if (head == add->p)
 			{
 				printf("-> [%p] %d\n", (void *)head, head->n);
-				free_listadd(newhead);
-				return (count);
+				free_listp(&hptr);
+				return (nnodes);
 			}
-			checker = checker->next;
 		}
+
 		printf("[%p] %d\n", (void *)head, head->n);
-		add_nodeaddress(&newhead, head);
 		head = head->next;
-		count++;
+		nnodes++;
 	}
-	free_listadd(newhead);
-	return (count);
+
+	free_listp(&hptr);
+	return (nnodes);
 }
