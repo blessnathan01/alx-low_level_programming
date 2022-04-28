@@ -1,17 +1,20 @@
-#include "main.h"
-
 /**
- * get_endianness - a function that checks the endianness.
- *
- * Return: 0 if big endian, 1 if little endian
- */
+  *get_endianness - determines the endianness of a machine.
+  *
+  *Return: 0 big endian, 1 little endian.
+  */
 int get_endianness(void)
 {
-	int num = 1;
-	char *endian = (char *)&num;
+	unsigned int x = 0x7343211;
 
-	if (*endian == 1)
+	char *c = (char *)&x;
+
+	if (*c)
+	{
 		return (1);
-
-	return (0);
+	}
+	else
+	{
+		return (0);
+	}
 }
