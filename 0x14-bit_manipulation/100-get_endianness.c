@@ -1,7 +1,7 @@
 /**
-  *get_endianness - determines the endianness of a machine.
+  * get_endianness - determines the endianness of a machine.
   *
-  *Return: 0 big endian, 1 little endian.
+  * Return: 0 big endian, 1 little endian.
   */
 int get_endianness(void)
 {
