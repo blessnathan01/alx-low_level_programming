@@ -4,7 +4,7 @@
  * get_dnodeint_at_index - returns the nth node
  * of a linked list i.e. dlistint_t
  * @head: pointer to the list
- * @index: position of the nth node starting 
+ * @index: position of the nth node starting
  * from zero
  *
  * Return: node.
