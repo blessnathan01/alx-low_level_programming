@@ -15,14 +15,11 @@ hash_table_t *hash_table_create(unsigned long int size)
 	fresh_table = malloc(sizeof(hash_table_t));
 	if (size == 0 || fresh_table == NULL)
 		return (NULL);
-
 	fresh_table->array = malloc(sizeof(void *) * size);
 	if (fresh_table->array == NULL)
 		return (NULL);
-
 	fresh_table->size = size;
 	for (x = 0; x < size; x++)
 		fresh_table->array[x] = NULL;
-
 	return (fresh_table);
 }
