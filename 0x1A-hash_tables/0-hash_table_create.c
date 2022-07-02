@@ -13,7 +13,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 	unsigned long int x;
 
 	fresh_table = malloc(sizeof(hash_table_t));
-	if (size == 0 || fresh_table == NULL)
+	if (fresh_table == NULL || size == 0)
 		return (NULL);
 	fresh_table->array = malloc(sizeof(void *) * size);
 	if (fresh_table->array == NULL)
