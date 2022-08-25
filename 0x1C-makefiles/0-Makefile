@@ -1,9 +1,12 @@
 .PHONY: all say_hello generate clean
 
+show = echo
+
 all: say_hello generate
 
 say_hello:
-	@echo "Hello Blessing!"
+	@$(show) "Hello Blessing!"
+	@${show} "How are you?"
 
 generate:
 	@echo "Creating empty text files..."
