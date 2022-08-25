@@ -13,5 +13,14 @@ target: prerequisites
 <TAB> recipe
 ```
 
+## Variables, Patterns and Functions
+To define a variable inside makefiles, we  use the `=` operator. Variables are referred to as recursive expanded used in rules. For instance,
+```
+show = echo
+
+say_hi:
+	${show} "Hi BlessNathan!"
+```
+
 ## Author
 - BlessNathan (blessnathan02@gmail.com)
