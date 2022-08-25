@@ -1,17 +1,2 @@
-.PHONY: all say_hello generate clean
-
-show = echo
-
-all: say_hello generate
-
-say_hello:
-	@$(show) "Hello Blessing!"
-	@${show} "How are you?"
-
-generate:
-	@echo "Creating empty text files..."
-	touch file-{1..10}.txt
-
-clean:
-	@echo "Cleaning up..."
-	rm *.txt
+all: main.o school.o
+	gcc main.c scholl.c -o school
