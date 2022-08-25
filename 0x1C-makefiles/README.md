@@ -20,6 +20,7 @@ show = echo
 
 say_hi:
 	${show} "Hi BlessNathan!"
+	$(show) "How are you?"
 ```
 
 ## Author
