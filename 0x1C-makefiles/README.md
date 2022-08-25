@@ -5,8 +5,10 @@ It defines a set of tasks to be executed. It is used by `make` utility which is 
 It includes target, prerequisites, and recipe. The recipe uses the prerequisites to make a target.
 
 ### Rule Syntax
-`target: prerequisites
-<TAB> recipe`
+```
+target: prerequisites
+<TAB> recipe
+```
 
 ## Author
 - BlessNathan (blessnathan02@gmail.com)
