@@ -13,7 +13,7 @@ all: ${OBJ}
 clean:
 	$(RM) -f *~ $(NAME)
 
-clean:
+oclean:
 	${RM} -f *~ $(OBJ)
 
 fclean: clean oclean
